@@ -31,6 +31,9 @@ pipeline {
 		failure{
 			echo " I Run When you fail. Failure"
 		}
+		changed{
+			echo "something Changed IDK"
+		}
 	}
 	
 }
