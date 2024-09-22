@@ -20,7 +20,8 @@ pipeline {
 
 			}
 		}
-	} post{
+	} 
+	post{
 		Always{
 			echo "I am Learning this stuff"
 		}
