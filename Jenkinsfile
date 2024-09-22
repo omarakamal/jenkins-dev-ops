@@ -20,6 +20,16 @@ pipeline {
 
 			}
 		}
+	} post{
+		Always{
+			echo "I am Learning this stuff"
+		}
+		success{
+			echo "I run when you are successful"
+		}
+		failure{
+			echo " I Run When you fail. Failure"
+		}
 	}
 	
 }
