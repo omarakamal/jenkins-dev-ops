@@ -22,7 +22,7 @@ pipeline {
 		}
 	} 
 	post{
-		Always{
+		always{
 			echo "I am Learning this stuff"
 		}
 		success{
