@@ -27,9 +27,30 @@ pipeline {
 
 			}
 		}
-		stage('Integration Test'){
+		stage('Package'){
 			steps{
-				sh "mvn failsafe:integration-test failsafe:verify"
+				
+				sh "mvn package -Dskiptests"
+			}
+		}
+		stage('Build Docker Image'){
+			steps{
+				// docker build -t omardevelopment/currency-exchange-devops:$env_BUILD_TAG
+
+				script{
+					dockerImage = docker.build("omardevelopment/currency-exchange-devops:${env_BUILD_TAG}")
+				}
+			}
+		}
+		
+			stage('Push Docker Image'){
+			steps{
+				docker.withRegistry('','dockerhub'){
+					dockerImage.push();
+					dockerImage.push("latest");
+
+				}
+
 
 			}
 		}
